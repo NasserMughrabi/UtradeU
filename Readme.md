@@ -33,7 +33,7 @@
    - type in the command "git checkout -b nameofyourbranch", this will create the branch and switch to it
    - connect your local branch to gitlab branch by typing this command "git push -u origin nameofyourbranch"
 
-# Notes:
+# Notes
 
 1. To avoid future bugs: In the future, we will probably have to install packages, so make sure to `npm install` both in frontend and backend directories every time you pull the repo. This will install the packages that other teammates installed while developing.
 
