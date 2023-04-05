@@ -23,6 +23,7 @@
    - ctrl-c to stop the app from running
 
 6. Navigate to backend directory, and type in the terminal this command line to run the server and database "npm start"
+
    - ctrl-` to open the terminal
    - cd backend
    - npm install
@@ -30,5 +31,7 @@
    - the console will print "server is listening on port 8080/n DB connected"
    - ctrl-c to stop the app from running
 
-
-
+7. Create your own git/gitlab branch
+   - in you terminal, make sure you are in the project directory (utradeu)
+   - type in the command "git checkout -b nameofyourbranch", this will create the branch and switch to it
+   - connect your local branch to gitlab branch by typing this command "git push -u origin nameofyourbranch"
