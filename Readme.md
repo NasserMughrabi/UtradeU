@@ -37,7 +37,7 @@
 
 1. To avoid future bugs: In the future, we will probably have to install packages, so make sure to `npm install` both in frontend and backend directories every time you pull the repo. This will install the packages that other teammates installed while developing.
 
-2. Don't push irrelevant files/folders: I will create a .gitignore folder for the whole project, you should add your practice folders/files to the gitignore (the most outter one not the ones in frontend or backend). This way your folders will not be pushed or shared with us. This will keep our repo clean.
+2. Don't push irrelevant files/folders: I created .gitignore folder for the whole project, you should add your practice folders/files to the gitignore (the most outter one not the ones in frontend or backend). This way your folders will not be pushed or shared with us. This will keep our repo clean.
 
 
 
