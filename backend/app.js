@@ -8,6 +8,7 @@ require("dotenv").config();
 // app
 const app = express();
 const User = require('./User')
+const Post = require('./Post')
 
 // db
 const connectDB = require('./config/dbConn')
@@ -29,6 +30,9 @@ app.use(cors({ origin: true, credentials: true }));
 
 const profileRouter = require('./routes/profile')
 app.use("/profile", profileRouter)
+
+const postRouter = require('./routes/post')
+app.use("/post", postRouter)
 
 // port
 const port = process.env.PORT | 8080;
