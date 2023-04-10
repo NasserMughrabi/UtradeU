@@ -14,11 +14,12 @@
 //Set up the required modules 
 const express = require('express')
 const mongoose = require('mongoose')
-const User = require('../User')
+const User = require('../schemas/User')
 const connectDB = require('../config/dbConn')
 
 //establish connection to the database
-connectDB()
+
+//connectDB()
 
 const router = express.Router()
 

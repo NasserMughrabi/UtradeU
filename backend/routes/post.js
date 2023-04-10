@@ -2,11 +2,11 @@ const express = require('express')
 
 const mongoose = require('mongoose')
 
-const Post = require('../Post')
+const Post = require('../schemas/Post')
 
 const connectDB = require('../config/dbConn')
 
-connectDB()
+//connectDB()
 
 const router = express.Router()
 

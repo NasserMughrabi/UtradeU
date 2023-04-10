@@ -7,8 +7,8 @@ require("dotenv").config();
 
 // app
 const app = express();
-const User = require('./User')
-const Post = require('./Post')
+const User = require('./schemas/User')
+const Post = require('./schemas/Post')
 
 // db
 const connectDB = require('./config/dbConn')
