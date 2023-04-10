@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./../styles/profile.css"
+import {useState} from 'react'
+import axios from 'axios'
 
 
 const Profile = () => {
+
+    const [profileData, setProfileData] = useState(null);
+    useEffect(() => {
+        axios.get("https://randomuser.me/api/")
+        //   .then((response) => console.log(response.data.results[0]))
+          .then((response) => setProfileData(response.data.results[0]))
+          .catch((error) => console.log(error));
+    }, []);
 
     return (
         <div class="container emp-profile">
@@ -10,7 +20,7 @@ const Profile = () => {
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src={profileData && profileData.picture.large} alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -19,11 +29,9 @@ const Profile = () => {
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                    <h5>
-                                        Kshiti Ghelani
-                                    </h5>
+                            {profileData && <h5>{profileData.name.first}</h5>}
                                     <h6>
-                                        Web Developer and Designer
+                                        Computer Science
                                     </h6>
                                     <p class="proile-rating">RATING : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -53,20 +61,20 @@ const Profile = () => {
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
+                                        {/* <div class="row">
                                             <div class="col-md-6">
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>Kshiti123</p>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                {profileData && <p>{profileData.name.first} {profileData.name.last}</p>}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -74,7 +82,7 @@ const Profile = () => {
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                {profileData && <p>{profileData.email}</p>}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -82,15 +90,15 @@ const Profile = () => {
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                {profileData && <p>{profileData.phone}</p>}
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Profession</label>
+                                                <label>Major</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p>Computer Science</p>
                                             </div>
                                         </div>
                             </div>
