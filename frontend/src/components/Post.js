@@ -19,7 +19,7 @@ const Post = () => {
   // when user clicks submit, set post object to express server using the localhost.
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/createPost", post) // I need this URL from Jacob
+    axios.post("http://localhost:8080/createPost", post) // I need this URL from Cameron
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };

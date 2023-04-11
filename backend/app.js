@@ -1,6 +1,7 @@
 // import moduels
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
 const morgan = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
@@ -9,6 +10,7 @@ require("dotenv").config();
 const app = express();
 const User = require('./schemas/User')
 const Post = require('./schemas/Post')
+app.use(bodyParser.json());
 
 // db
 const connectDB = require('./config/dbConn')
@@ -25,6 +27,17 @@ connectDB()
 // middleware
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
+
+//This might be a route, idk I'll think about it later
+app.post('/createPost', async (req, res) =>
+{
+  //instead of req.params, use req.body to get the stuff from the front end
+  const newPost = await Post.create({
+    description: req.body.content,
+    likes : req.body.likes
+  })
+  //console.log(newPost)
+})
 
 // routes
 
