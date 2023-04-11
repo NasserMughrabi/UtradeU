@@ -35,7 +35,7 @@ router.get('/:firstName', async (req,res) =>
 {
     //this method needs to be async because the findOne() method returns a query and we need the result back before we can move on
     const user = await User.findOne({firstName : req.params.firstName}).exec()
-    res.send(user.firstName + " " + user.lastName)
+    res.send(JSON.stringify(user))
 })
 
 

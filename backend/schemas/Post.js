@@ -14,7 +14,7 @@ const CommentSchema = new mongoose.Schema({
 const PostSchema = new mongoose.Schema({
     user : {
         type: String,
-        require : true
+        require : false
     },
     description : {
         type: String,
@@ -30,7 +30,7 @@ const PostSchema = new mongoose.Schema({
     },
     liked : {
         type: Boolean,
-        require : true
+        require : false
     }
 })
 
