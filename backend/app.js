@@ -41,6 +41,14 @@ app.post('/createPost', async (req, res) =>
 
 // routes
 
+app.post("/createPost", async (req, res) => {
+  const newPost = await Post.create({
+    description: req.params.content,
+    likes: req.params.likes,
+  });
+  console.log(newPost);
+});
+
 const profileRouter = require('./routes/profile')
 app.use("/profile", profileRouter)
 
