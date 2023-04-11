@@ -7,8 +7,10 @@ import axios from 'axios'
 const Profile = () => {
 
     const [profileData, setProfileData] = useState(null);
+    // const firstName = "Jacob";
     useEffect(() => {
-        axios.get("https://randomuser.me/api/")
+        // axios.get("https://randomuser.me/api/")
+        axios.get(`/profile/${firstName}`)
         //   .then((response) => console.log(response.data.results[0]))
           .then((response) => setProfileData(response.data.results[0]))
           .catch((error) => console.log(error));
