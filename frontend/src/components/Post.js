@@ -18,7 +18,7 @@ const Post = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("url", post) // I need this URL from Cameron
+    axios.post("http://localhost:8080/createPost", post) // I need this URL from Cameron
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
