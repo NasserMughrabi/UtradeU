@@ -47,6 +47,6 @@ const server = app.listen(port, () =>
 async function run()
 {
   const user = await User.create({firstName : "Jacob" , lastName : "Day"})
-  await user.save()
+  //await user.save()
   console.log(user)
 }

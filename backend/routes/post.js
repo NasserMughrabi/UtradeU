@@ -26,6 +26,21 @@ router.get('/', async (req,res) =>
     res.send(msg)
 })
 
+router.get('/createPost', async (req,res) =>
+{
+    
+})
+
+router.post('/createPost', async(req,res) =>
+{
+    const newPost = await Post.create({
+        User: req.params.User,
+        description: req.params.description,
+        likes: req.params.likes,
+        liked: req.params.liked
+    })
+})
+
 
 
 module.exports = router;
