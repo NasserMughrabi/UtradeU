@@ -1,29 +1,39 @@
+/**
+ * 
+ * This module is a router for the posts section of UtradeU. This route will display the information 
+ * needed for displaying a post. 
+ * 
+ * TODO: Currently, this will fetch basic text information of a post: Description, user who posted,
+ * number of likes on the post, and whether or not the current user has liked the post. We will add
+ * the image of the items to be sold and comments as well.  
+ * 
+ * @version 1.0.0
+ * @author  Cameron Hanney
+ * 
+ */
+
+// Set up therequired modules
 const express = require('express')
-
-const mongoose = require('mongoose')
-
 const Post = require('../schemas/Post')
-
-const connectDB = require('../config/dbConn')
 
 //connectDB()
 
 const router = express.Router()
 
+//Get request for acquiring posts
 router.get('/', async (req,res) =>
 {    
     var msg = ""
     const post = await Post.find().exec()
-    console.log("found post with length", post.length)
-    for(let i = 0; i < post.length; i++) {
+    // for(let i = 0; i < post.length; i++) {
 
-        msg += "{<br>User: " + post[i].user + "<br>"
-        msg += "Liked: " + post[i].liked + "<br>"
-        msg += "Likes: " + post[i].likes + "<br>"
-        msg += "Description: " + post[i].description + "<br>}<br>"
-    }
+    //     msg += "{user: " + post[i].user + ", "
+    //     msg += "liked: " + post[i].liked + ", "
+    //     msg += "likes: " + post[i].likes + ", "
+    //     msg += "description: " + post[i].description + "}<br>"
+    // }
 
-    res.send(msg)
+    res.send(JSON.stringify(post))
 })
 
 router.get('/createPost', async (req,res) =>
@@ -40,7 +50,5 @@ router.post('/createPost', async(req,res) =>
         liked: req.params.liked
     })
 })
-
-
 
 module.exports = router;
