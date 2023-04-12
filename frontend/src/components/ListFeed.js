@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from 'react'
 import "./../styles/listfeed.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {useState} from 'react'
+import axios from 'axios'
 
 
 const ListFeed = () => {
+
+    const [postData, setPostData] = useState(null);
+    useEffect(() => {
+        // axios.get("https://randomuser.me/api/")
+        //   .then((response) => setProfileData(response.data.results[0]))
+        axios.get(`http://localhost:8080/post`)
+          .then((response) => console.log(response))
+          .then((response) => setPostData(response.data[0].description))
+          .catch((error) => console.log(error));
+    }, []);
+
+
     return (
     <section class='vh-100'>
         {/* <!-- Navbar --> */}
@@ -172,6 +186,7 @@ const ListFeed = () => {
                         </div>
                     </div>
                     <div class="feed-image p-2 px-3"><img class="img-fluid img-responsive" src="https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg"/></div>
+                    <div class="like p-2 cursor"><h2>{postData && postData.description}</h2></div>
                     <div class="d-flex justify-content-end socials p-2 py-3"><i class="fa fa-thumbs-up"></i><i class="fa fa-comments-o"></i><i class="fa fa-share"></i></div>
                     <div class="bg-white">
                     <div class="d-flex flex-row fs-12">

@@ -10,14 +10,16 @@ function App() {
     <>
       {/* <Profile /> */}
       {/* <Access /> */}
-      <Router>
+      <ListFeed />
+      {/* <Router>
         <Navbar />
         <Routes>
           <Route path='/' element={<Access />} />
           <Route path='/Profile' element={<Profile />} />
           <Route path='/Post' element={<Post />} />
+          <Route path ='/ListFeed' element={<ListFeed />} />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }
