@@ -1,3 +1,9 @@
+/**
+ * @author Nasser Mughrabi
+ * @description This is the profile page component. It's responsible for the look and functionality of the page
+ * 
+ */
+
 import React, { useEffect } from 'react'
 import "./../styles/profile.css"
 import {useState} from 'react'
@@ -6,17 +12,14 @@ import axios from 'axios'
 
 const Profile = () => {
 
+    // use a profileData object to store the json object recieved from the server/DB 
     const [profileData, setProfileData] = useState(null);
     const firstName = "Jacob";
     useEffect(() => {
-        // axios.get("https://randomuser.me/api/")
-        //   .then((response) => setProfileData(response.data.results[0]))
-        axios.get(`http://localhost:8080/profile/Jacob`)
-          .then((response) => console.log(response.data))
+        axios.get(`http://localhost:8080/profile/${firstName}`) // url will be variable as we go to production env. 
+          .then((response) => setProfileData(response.data)) // rerender the component everytime he data fetched
           .catch((error) => console.log(error));
     }, []);
-
-    // console.log();
 
     return (
         <div class="container emp-profile">
@@ -24,7 +27,7 @@ const Profile = () => {
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src={profileData && profileData.picture.large} alt=""/>
+                            <img src="{profileData && profileData.picture.large}" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -33,7 +36,7 @@ const Profile = () => {
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                            {profileData && <h5>{profileData.name.first}</h5>}
+                            {profileData && <h5>{profileData.firstName} {profileData.lastName}</h5>}
                                     <h6>
                                         Computer Science
                                     </h6>
@@ -78,7 +81,7 @@ const Profile = () => {
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                {profileData && <p>{profileData.name.first} {profileData.name.last}</p>}
+                                                {profileData && <p>{profileData.firstName} {profileData.lastName}</p>}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -86,7 +89,7 @@ const Profile = () => {
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                {profileData && <p>{profileData.email}</p>}
+                                                {/* {profileData && <p>{profileData.email}</p>} */}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -94,7 +97,7 @@ const Profile = () => {
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                {profileData && <p>{profileData.phone}</p>}
+                                                {/* {profileData && <p>{profileData.phone}</p>} */}
                                             </div>
                                         </div>
                                         <div class="row">

@@ -1,3 +1,9 @@
+/**
+ * @author Nasser Mughrabi
+ * @description This is the login/signup component. It's responsible for the look and functionality of login/signup
+ *
+ */
+
 import React from "react";
 import "./../styles/access.css";
 

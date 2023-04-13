@@ -1,6 +1,11 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+/**
+ * @author Nasser Mughrabi
+ * @description This is the navbar component. It's responsible for the look and functionality of the navbar
+ *
+ */
 
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -50,6 +55,6 @@ const Navbar = () => {
       </nav>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
