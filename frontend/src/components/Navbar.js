@@ -4,6 +4,8 @@ import {FaHome} from "react-icons/fa";
 import {FaBell} from "react-icons/fa";
 import {FaComments} from "react-icons/fa";
 
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -146,6 +148,6 @@ const Navbar = () => {
 
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
