@@ -1,26 +1,47 @@
 import React, { useEffect } from 'react'
 import "./../styles/listfeed.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useState} from 'react'
 import axios from 'axios'
+//icons
+import { FaSearch } from "react-icons/fa";
+import {FaComment} from "react-icons/fa";
+import {FaThumbsUp} from "react-icons/fa";
+import {FaShare} from "react-icons/fa";
+import {FaHome} from "react-icons/fa";
+import {FaBell} from "react-icons/fa";
+import {FaComments} from "react-icons/fa";
+
+
 
 
 const ListFeed = () => {
 
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState({
+        description: ""
+      });
     useEffect(() => {
         // axios.get("https://randomuser.me/api/")
         //   .then((response) => setProfileData(response.data.results[0]))
         axios.get(`http://localhost:8080/post`)
-          .then((response) => console.log(response))
-          .then((response) => setPostData(response.data[0].description))
+          //.then((response) => console.log(response))
+          .then((response) => setPostData({description:response.data[0].description}))
           .catch((error) => console.log(error));
     }, []);
+
+    // const handleCreatePost = (e) => {
+    //     e.preventDefault();
+    //     axios.post("http://localhost:8080/createPost", post) // I need this URL from Cameron
+    //       .then((response) => console.log(response))
+    //       .catch((error) => console.log(error));
+    //   };
 
 
     return (
     <section class='vh-100'>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"></link>
         {/* <!-- Navbar --> */}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   {/* <!-- Container wrapper --> */}
   <div class="container-fluid">
@@ -52,13 +73,13 @@ const ListFeed = () => {
       {/* <!-- Left links --> */}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="#"><FaHome/></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Chat</a>
+          <a class="nav-link" href="#"><FaComments/></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Notifications</a>
+          <a class="nav-link" href="#"><FaBell/></a>
         </li>
         
       </ul>
@@ -155,12 +176,10 @@ const ListFeed = () => {
 
 <div class="container mt-6 mb-1">
 <div class="input-group rounded">
+    
   <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <span class="input-group-text border-0" id="search-addon">
-    {/* <i class="fa fa-search"></i> */}
-    {/* <i class="fa fa-search" aria-hidden="true"></i> */}
-    {/* <FontAwesomeIcon icon={['fab', 'apple']} /> */}
-    <FontAwesomeIcon icon="fas fa-search" />
+    <FaSearch/>
   </span>
 </div>
 </div>
@@ -172,7 +191,8 @@ const ListFeed = () => {
             <div class="feed p-2">
                 <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white border">
                     <div class="feed-text px-">
-                        <h6 class="text-black-50 mt-2">Create a Post</h6>
+                        {/* <h6 class="text-black-50 mt-2">Create a Post</h6> */}
+                        <button class='btn btn-outline-success' type='submit'>Create a Post</button>
                     </div>
                     <div class="feed-icon px-2"><i class="fa fa-long-arrow-up text-black-50"></i></div>
                 </div>
@@ -186,13 +206,19 @@ const ListFeed = () => {
                         </div>
                     </div>
                     <div class="feed-image p-2 px-3"><img class="img-fluid img-responsive" src="https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg"/></div>
-                    <div class="like p-2 cursor"><h2>{postData && postData.description}</h2></div>
+                    <div class="like p-2 cursor"><h6>{postData && postData.description}</h6></div>
                     <div class="d-flex justify-content-end socials p-2 py-3"><i class="fa fa-thumbs-up"></i><i class="fa fa-comments-o"></i><i class="fa fa-share"></i></div>
                     <div class="bg-white">
                     <div class="d-flex flex-row fs-12">
-                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                        {/* <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div> */}
+                        {/* <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div> */}
+                        {/* <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div> */}
+
+                        <div class="like p-2 cursor"><FaThumbsUp/><span class="ml-1">Like</span></div>
+                        <div class="like p-2 cursor"><FaComment/><span class="ml-1">Comment</span></div>
+                        <div class="like p-2 cursor"><i class="fa fa-share"><FaShare/></i><span class="ml-1">Share</span></div>
+
+
                     </div>
 
                     <div class="d-flex flex-row fs-12">
@@ -200,10 +226,14 @@ const ListFeed = () => {
                     </div>
                 </div>
                 </div>
+                
             </div>
         </div>
+        
     </div>
+    
 </div>
+
         </section>
     );
 };
