@@ -27,7 +27,7 @@ const Profile = () => {
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="{profileData && profileData.picture.large}" alt=""/>
+                            <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -90,6 +90,7 @@ const Profile = () => {
                                             </div>
                                             <div class="col-md-6">
                                                 {/* {profileData && <p>{profileData.email}</p>} */}
+                                                <p>Jacob.day@gmail.com</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -98,6 +99,7 @@ const Profile = () => {
                                             </div>
                                             <div class="col-md-6">
                                                 {/* {profileData && <p>{profileData.phone}</p>} */}
+                                                <p>(123)456-7890</p>
                                             </div>
                                         </div>
                                         <div class="row">
