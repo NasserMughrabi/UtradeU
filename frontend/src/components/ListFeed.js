@@ -27,7 +27,7 @@ const ListFeed = () => {
             <article className='post-article'>
               <div class='container mt-4 mb-5'>
                 <div class='d-flex justify-content-center row'>
-                  <div class='col-md-8'>
+                  <div id="col-md-8-id" class='col-md-8'>
                     <div class='feed p-2'>
                       <div class='bg-white border mt-2'>
                         <div>
