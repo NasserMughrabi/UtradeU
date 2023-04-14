@@ -10,7 +10,6 @@ import "./../styles/post.css";
 import axios from "axios";
 
 const Post = () => {
-
   // post object to keep track of post related data
   const [post, setPost] = useState({
     poster: "",
@@ -27,6 +26,11 @@ const Post = () => {
   // when user clicks submit, post object will be sent to express server.
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (post.content == '') {
+      return;
+    }
+
     axios
       .post("http://localhost:8080/createPost", post) // I need this URL from Cameron
       .then((response) => console.log(response))
@@ -34,28 +38,22 @@ const Post = () => {
   };
 
   return (
-    <main className='home'>
-      <section className='column-1'></section>
-      <section className='column-2 list'>
-        <article className='create-post'>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className='form-control'
-              name='content'
-              value={post.content}
-              id='post-content'
-              placeholder='New Post'
-              rows='4'
-              onChange={handleChange}
-            ></textarea>
-            <button type='submit' className='btn btn-primary'>
-              Submit
-            </button>
-          </form>
-        </article>
-      </section>
-      <section className='column-3 chat'></section>
-    </main>
+    <article className='create-post'>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          className='form-control'
+          name='content'
+          value={post.content}
+          id='post-content'
+          placeholder='New Post'
+          rows='4'
+          onChange={handleChange}
+        ></textarea>
+        <button type='submit' className='btn btn-primary'>
+          Post
+        </button>
+      </form>
+    </article>
   );
 };
 
