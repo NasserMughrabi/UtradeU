@@ -4,6 +4,7 @@ import Post from "./components/Post";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ListFeed from "./components/ListFeed";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -16,8 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Access />} />
           <Route path='/Profile' element={<Profile />} />
-          <Route path='/Post' element={<Post />} />
-          <Route path ='/Home' element={<ListFeed />} />
+          <Route path ='/Home' element={<Home />} />
         </Routes>
       </Router>
     </>

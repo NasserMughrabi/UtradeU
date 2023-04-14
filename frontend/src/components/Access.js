@@ -53,8 +53,7 @@ const Access = () => {
                           style={{ display: "block", width: "100%" }}
                           onClick={(e) => {
                             e.preventDefault();
-                            window.location.href =
-                              "https://go.utah.edu/cas/login?TARGET=https%3A%2F%2Fportal.app.utah.edu%2Fapi%2Fsecurity%2Flogin%3Fapp%3Dhttps%253A%252F%252Fportal.app.utah.edu%252F";
+                            window.location.href = "http://localhost:3000/home";
                           }}
                         >
                           Signup
@@ -68,8 +67,7 @@ const Access = () => {
                           style={{ display: "block", width: "100%" }}
                           onClick={(e) => {
                             e.preventDefault();
-                            window.location.href =
-                              "https://go.utah.edu/cas/login?TARGET=https%3A%2F%2Fportal.app.utah.edu%2Fapi%2Fsecurity%2Flogin%3Fapp%3Dhttps%253A%252F%252Fportal.app.utah.edu%252F";
+                            window.location.href = "http://localhost:3000/home";
                           }}
                         >
                           Login
