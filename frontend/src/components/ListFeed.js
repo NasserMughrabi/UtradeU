@@ -15,7 +15,7 @@ const ListFeed = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/post`)
+      .get(`http://localhost:8080/posts`)
       .then((response) => setPosts(response.data))
       .catch((error) => console.log(error));
   }, []);
