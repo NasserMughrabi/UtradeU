@@ -20,6 +20,8 @@ const Profile = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  console.log(profileData);
+
   return (
     <div class='container emp-profile'>
       <form method='post'>
@@ -90,13 +92,18 @@ const Profile = () => {
           <div class='col-md-4'>
             <div class='profile-work'>
               <p>Bio</p>
-              <a href=''>I love UtradeU</a>
+              {profileData && <a href=''>{profileData.bio}</a>}
               <br />
               <p>Service</p>
-              <a href=''>Math Tutor</a>
-              <br />
-              <a href=''>Physics Tutor</a>
-              <br />
+              {profileData &&
+                profileData.services.map((service) => {
+                  return (
+                    <>
+                      <a href=''>{service}</a>
+                      <br />
+                    </>
+                  );
+                })}
             </div>
           </div>
           <div class='col-md-8'>
@@ -132,8 +139,11 @@ const Profile = () => {
                     <label>Email</label>
                   </div>
                   <div class='col-md-6'>
-                    {/* {profileData && <p>{profileData.email}</p>} */}
-                    <p>Jacob.day@gmail.com</p>
+                    {profileData && (
+                      <p>
+                        {profileData.email}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div class='row'>
@@ -141,8 +151,11 @@ const Profile = () => {
                     <label>Phone</label>
                   </div>
                   <div class='col-md-6'>
-                    {/* {profileData && <p>{profileData.phone}</p>} */}
-                    <p>(123)456-7890</p>
+                    {profileData && (
+                      <p>
+                        {profileData.phoneNumber}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div class='row'>
@@ -150,7 +163,11 @@ const Profile = () => {
                     <label>Major</label>
                   </div>
                   <div class='col-md-6'>
-                    <p>Computer Science</p>
+                    {profileData && (
+                      <p>
+                        {profileData.major}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

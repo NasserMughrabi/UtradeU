@@ -53,7 +53,7 @@ const profileRouter = require('./routes/profile')
 app.use("/profile", profileRouter)
 
 const postRouter = require('./routes/post')
-app.use("/post", postRouter)
+app.use("/posts", postRouter)
 
 // port
 const port = process.env.PORT | 8080;
