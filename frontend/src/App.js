@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ListFeed from "./components/ListFeed";
 import Home from "./components/Home";
+import Chat from "./components/Chat";
 
 function App() {
   return (

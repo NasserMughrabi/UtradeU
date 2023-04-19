@@ -1,20 +1,22 @@
 import React from 'react'
 import Post from './Post';
+import Chat from './Chat'
 import ListFeed from './ListFeed';
+import Sidebar from './Sidebar';
 import "./../styles/home.css";
 
 const Home = () => {
   return (
     <main className='home'>
-      <section className='column-1'>
-        
+      <section className='column-1 left'>
+        {/* <Sidebar /> */}
       </section>
-      <section className='column-2 list'>
+      <section className='column-2 middle'>
         <Post />
         <ListFeed />
       </section>
-      <section className='column-3 chat'>
-
+      <section className='column-3 right'>
+        <Chat />
       </section>
     </main>
   );
