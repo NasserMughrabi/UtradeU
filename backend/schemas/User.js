@@ -12,15 +12,30 @@ const UserSchema = new mongoose.Schema({
     uID : {
         type: String,
         require : true
+    },
+    
+    phoneNumber : {
+        type: String,
+        require : false
+    },
+    email : {
+        type: String,
+        require : true
+    },
+    bio : {
+        type: String,
+        require: false
+    },
+    major : {
+        type: String,
+        require: false
+    },
+    services : {
+        type: [String],
+        require: false
     }
 })
 
-const ProfileSchema = new mongoose.Schema({
-    user : {
-        type: mongoose.SchemaTypes.ObjectID,
-        require : true
-    }
-})
 
 UserSchema.statics.findByName = function(firstName)
 {
