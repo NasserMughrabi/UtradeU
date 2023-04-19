@@ -2,7 +2,6 @@ import React from 'react'
 import Post from './Post';
 import Chat from './Chat'
 import ListFeed from './ListFeed';
-import Sidebar from './Sidebar';
 import "./../styles/home.css";
 
 const Home = () => {
