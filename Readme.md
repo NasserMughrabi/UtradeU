@@ -41,5 +41,5 @@
 
 3. Don't push irrelevant files/folders: I created .gitignore folder for the whole project, you should add your practice folders/files to the gitignore (the most outter one not the ones in frontend or backend). This way your folders will not be pushed or shared with us. This will keep our repo clean.
 
-
+4. If you have to install packages for either frontend or backend development, be sure to "npm install packageName" in either frontend or backend directories. Don't npm install packages in the global folder "utradeu".
 
