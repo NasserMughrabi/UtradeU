@@ -1,4 +1,4 @@
-.card .card-body {
+#chat-card-body {
     position: fixed;
     background-color: white;
     height: 100vh;

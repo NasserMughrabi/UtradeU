@@ -8,11 +8,18 @@ import React, { useEffect } from "react";
 import "./../styles/profile.css";
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import Dropzone from "react-dropzone";
+
 
 const Profile = () => {
   // use a profileData object to store the json object recieved from the server/DB
   const [profileData, setProfileData] = useState(null);
-  const firstName = "Jacob";
+  const firstName = useParams().firstName.charAt(0).toUpperCase()+ useParams().firstName.slice(1);
+
+  const [image, setImage] = useState(null);
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/profile/${firstName}`) // url will be variable as we go to production env.
@@ -20,7 +27,18 @@ const Profile = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(profileData);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
 
   return (
     <div class='container emp-profile'>
@@ -28,13 +46,11 @@ const Profile = () => {
         <div class='row'>
           <div class='col-md-4'>
             <div class='profile-img'>
-              <img
-                src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-                alt=''
-              />
+              {!image && <img src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png' alt='Uploaded image' />} {/*Default image */}
+              {image && <img src={image} alt='Uploaded image' />} {/*Uploaded image */}
               <div class='file btn btn-lg btn-primary'>
                 Change Photo
-                <input type='file' name='file' />
+                <input type='file' name='file' onChange={handleImageChange} />
               </div>
             </div>
           </div>
@@ -139,11 +155,7 @@ const Profile = () => {
                     <label>Email</label>
                   </div>
                   <div class='col-md-6'>
-                    {profileData && (
-                      <p>
-                        {profileData.email}
-                      </p>
-                    )}
+                    {profileData && <p>{profileData.email}</p>}
                   </div>
                 </div>
                 <div class='row'>
@@ -151,11 +163,7 @@ const Profile = () => {
                     <label>Phone</label>
                   </div>
                   <div class='col-md-6'>
-                    {profileData && (
-                      <p>
-                        {profileData.phoneNumber}
-                      </p>
-                    )}
+                    {profileData && <p>{profileData.phoneNumber}</p>}
                   </div>
                 </div>
                 <div class='row'>
@@ -163,11 +171,7 @@ const Profile = () => {
                     <label>Major</label>
                   </div>
                   <div class='col-md-6'>
-                    {profileData && (
-                      <p>
-                        {profileData.major}
-                      </p>
-                    )}
+                    {profileData && <p>{profileData.major}</p>}
                   </div>
                 </div>
               </div>
