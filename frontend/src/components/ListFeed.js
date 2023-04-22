@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import "./../styles/listfeed.css";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { PostsContext } from "./PostsContext";
 
 //icons
 import { FaSearch } from "react-icons/fa";
@@ -11,19 +11,20 @@ import { FaThumbsUp } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
 
 const ListFeed = () => {
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useContext(PostsContext);
 
+  // Get all posts from backend/express.js
   useEffect(() => {
     axios
       .get(`http://localhost:8080/posts`)
-      .then((response) => setPosts(response.data))
+      .then((response) => setPosts(response.data.reverse()))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <section class='vh-100'>
       {posts &&
-        posts.reverse().map((post) => {
+        posts.map((post) => {
           return (
             <article className='post-article'>
               <div class='container mt-4 mb-5'>

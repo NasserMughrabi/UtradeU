@@ -33,7 +33,7 @@ app.post('/createPost', async (req, res) =>
 {
   //instead of req.params, use req.body to get the stuff from the front end
   const newPost = await Post.create({
-    description: req.body.content,
+    description: req.body.description,
     likes : req.body.likes
   })
   //console.log(newPost)
@@ -43,7 +43,7 @@ app.post('/createPost', async (req, res) =>
 
 app.post("/createPost", async (req, res) => {
   const newPost = await Post.create({
-    description: req.params.content,
+    description: req.params.description,
     likes: req.params.likes,
   });
   console.log(newPost);
@@ -64,7 +64,6 @@ const server = app.listen(port, () =>
 );
 
 //run();
-
 async function run()
 {
   const user = await User.create({firstName : "Jacob" , lastName : "Day"})
