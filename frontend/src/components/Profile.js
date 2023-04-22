@@ -9,7 +9,6 @@ import "./../styles/profile.css";
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Dropzone from "react-dropzone";
 
 
 const Profile = () => {
