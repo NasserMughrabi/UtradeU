@@ -12,13 +12,23 @@ import { FaShare } from "react-icons/fa";
 
 const ListFeed = () => {
   const [posts, setPosts] = useState(null);
+  const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:8080/posts`)
       .then((response) => setPosts(response.data))
+      // .then((response) => console.log(response.data.reverse()[0]))
       .catch((error) => console.log(error));
+      
   }, []);
+
+  // useEffect(() =>
+  // {
+  //   axios.get(`http://localhost:8080/uploads/Happy Birthday Jimmy 2.png`)
+  //   .then((response) => setPictures(response.data))
+  //   .catch((error) => console.log(error));
+  // })
 
   return (
     <section class='vh-100'>
@@ -52,10 +62,17 @@ const ListFeed = () => {
                           </div>
                         </div>
                         <div class='feed-image p-2 px-3'>
-                          <img
+                          {
+                            post.pictureURL ? <img
                             class='img-fluid img-responsive'
-                            src='https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg'
-                          />
+                            src={`http://localhost:8080/uploads/${post.pictureURL}`}
+                          /> : <img
+                          class='img-fluid img-responsive'
+                          src='https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg'
+
+                        />
+                          }
+                          
                         </div>
                         <div class='like p-2 cursor'>
                           <h6>{post.description}</h6>

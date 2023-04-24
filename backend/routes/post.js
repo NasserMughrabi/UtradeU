@@ -32,7 +32,7 @@ router.get('/', async (req,res) =>
     //     msg += "likes: " + post[i].likes + ", "
     //     msg += "description: " + post[i].description + "}<br>"
     // }
-
+    console.log(post)
     res.send(JSON.stringify(post))
 })
 
