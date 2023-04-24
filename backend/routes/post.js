@@ -43,6 +43,7 @@ router.get('/createPost', async (req,res) =>
 
 router.post('/createPost', async(req,res) =>
 {
+    console.log("In Cameron's Thingy")
     const newPost = await Post.create({
         User: req.params.User,
         description: req.params.description,
