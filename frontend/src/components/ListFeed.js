@@ -19,7 +19,7 @@ const ListFeed = () => {
       .get(`http://localhost:8080/posts`)
       .then((response) => setPosts(response.data.reverse()))
       .catch((error) => console.log(error));
-  }, []);
+  }, [posts]);
 
   return (
     <section class='vh-100'>
