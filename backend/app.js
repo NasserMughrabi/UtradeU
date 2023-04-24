@@ -32,7 +32,13 @@ app.use(cors({ origin: true, credentials: true }));
 app.post('/createPost', async (req, res) =>
 {
   //instead of req.params, use req.body to get the stuff from the front end
+  
+  const users = await User.find({}).exec();
+  const posts = await Post.find({}).exec();
+  const newUser = users.at(posts.length % 5);
+  console.log(newUser)
   const newPost = await Post.create({
+    user : newUser.firstName + " " + newUser.lastName,
     description: req.body.content,
     likes : req.body.likes
   })
@@ -41,13 +47,19 @@ app.post('/createPost', async (req, res) =>
 
 // routes
 
-app.post("/createPost", async (req, res) => {
-  const newPost = await Post.create({
-    description: req.params.content,
-    likes: req.params.likes,
-  });
-  console.log(newPost);
-});
+// app.post("/createPost", async (req, res) => {
+//   console.log("In My thingy")
+//   const users = await User.find({}).exec();
+//   const posts = await Post.find({}).exec();
+//   const newUser = users.indexOf(posts.length % 5);
+//   console.log("nice post" + newUser);
+//   const newPost = await Post.create({
+//     user: users.indexOf(posts.length % 5),
+//     description: req.params.content,
+//     likes: req.params.likes,
+//   });
+//   console.log(newPost);
+// });
 
 const profileRouter = require('./routes/profile')
 app.use("/profile", profileRouter)
