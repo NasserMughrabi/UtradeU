@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const CommentSchema = new mongoose.Schema({
     postID : {
         type: mongoose.Types.ObjectId,
-        // ref: "Post"
+        ref: "Post"
     },
     commenter : {
         type: String,
@@ -13,7 +13,10 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         require : true
     },
-    timestamp : String
+    timestamp : {
+        type: String,
+        require : true,        
+    }
 })
 
 const PostSchema = new mongoose.Schema({
@@ -33,16 +36,8 @@ const PostSchema = new mongoose.Schema({
         type: Boolean,
         require : false
     },
-    pictureURL : {
-        type: String,
-        require : false
-    }
-    },
     comments : [{type: mongoose.Types.ObjectId, ref: "Comment"}]        
 })
 
-// module.exports = mongoose.model("Post", PostSchema)
-
-const Comment = mongoose.model("Comment", CommentSchema) 
-const Post = mongoose.model("Post", PostSchema)
-module.exports = {Comment, Post}
+module.exports = mongoose.model("Comment", CommentSchema)
+module.exports = mongoose.model("Post", PostSchema)

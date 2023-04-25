@@ -25,6 +25,7 @@ require("dotenv").config();
 const app = express();
 const User = require('./schemas/User')
 const Post = require('./schemas/Post')
+const Comment = require('./schemas/Post')
 app.use(bodyParser.json());
 
 // db
@@ -107,7 +108,6 @@ const server = app.listen(port, () =>
 );
 
 //run();
-
 async function run()
 {
   const user = await User.create({firstName : "Jacob" , lastName : "Day"})
