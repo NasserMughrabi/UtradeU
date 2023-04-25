@@ -110,10 +110,26 @@ const ListFeed = () => {
                               <span class='ml-1'>{post.likes} Likes</span>
                             </div>
                           </div>
+                {/* Comments */}
+                          <div class="media-block">
+                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="https://bootdey.com/img/Content/avatar/avatar2.png"/></a>
+                <div class="media-body">
+                  <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">Bobby Marz</a>
+                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i>  7 min ago</p>
+                  </div>
+                  <p> {post.comments.commenter} </p>
+                  <div class="pad-ver">
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i class="fa fa-thumbs-up"></i> Like </a>
+                      <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                    </div>
+                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                  </div>
+                </div>
+              </div>
+              {/* Comments */}
 
-                          <div>
-                          <Comments></Comments>
-                        </div>
                         </div>
                       </div>
                     </div>

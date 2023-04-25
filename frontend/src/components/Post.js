@@ -16,6 +16,7 @@ const Post = () => {
   const [post, setPost] = useState({
     description: "",
     likes: 0,
+    comments: "hello"
   });
 
   // posts state from postsContext
@@ -34,7 +35,7 @@ const Post = () => {
     if (post.description == "") {
       return;
     } else {
-      setPost({ ...post, description: "" });
+      setPost({ ...post, description: "", comments: "" });
     }
 
     axios
