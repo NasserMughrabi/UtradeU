@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const multer = require('multer')
 const fs = require('fs')
+const seedDB = require('./database/DBSeeder')
 var storage = multer.diskStorage({
   destination : function(req,file,cb)
   {
@@ -86,6 +87,12 @@ app.post('/image', async(req, res) =>
     }
     res.send(req.file)
   })
+})
+
+app.get('/resetDB', async(req,res) =>
+{
+  seedDB();
+  res.send("Okay");
 })
 
 //routes
