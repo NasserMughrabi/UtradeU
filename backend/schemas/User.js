@@ -36,13 +36,11 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-
 UserSchema.statics.findByName = function(firstName)
 {
     console.log("Reached new method")
     const user = this.where({firstName : new RegExp(firstName, 'i')})
     console.log(user)
-    // return this.where({firstName : new RegExp(firstName, 'i')});
 }
 
 module.exports = mongoose.model("User", UserSchema)
