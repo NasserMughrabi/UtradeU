@@ -13,10 +13,7 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         require : true
     },
-    timestamp : {
-        type: String,
-        require : true,        
-    }
+    timestamp : String
 })
 
 const PostSchema = new mongoose.Schema({

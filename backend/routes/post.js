@@ -40,25 +40,23 @@ router.post('/createPost', async(req,res) =>
 
 router.get('/:postID', async(req,res) =>
 {    
-    const post = await Post.findOne({_id : req.params.postID}).exec()    
+    const post = await Post.findOne({_id : req.params.postID}).populate('comments').exec()
+    res.send(JSON.stringify(post))
+})
+
+router.post('/leaveComment', async(req,res) => {
+
+    const post = await Post.findOne({_id : req.params.postID}).exec()
+
+    const newComment = await Comment.create({
+        commenter: req.params.User,
+        commentMessage: req.params.commentMessage,  
+    });
 
     post.comments.push(newComment._id)
     post.save()
+
     console.log(post)
     console.log(newComment)
-
-    const newPost = await Post.find().populate('comments').exec()
-    console.log(newPost)
-    res.send(JSON.stringify(newPost))
-})
-
-router.post('/leaveComment/:', async(req,res) => {
-
-    const newComment = await Comment.create({
-        commenter: "Kirby",
-        commentMessage: "Poyo",
-        timestamp: "TODAY"        
-    });
-
 })
 module.exports = router;
