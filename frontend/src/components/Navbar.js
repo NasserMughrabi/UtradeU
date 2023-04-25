@@ -34,6 +34,11 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
+              <li class='nav-item'>
+                <Link class='nav-link active' to='/chat' variant='chat'>
+                  Chat
+                </Link>
+              </li>
             </ul>
             <form class='d-flex'>
               <input

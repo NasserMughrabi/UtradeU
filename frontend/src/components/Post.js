@@ -16,6 +16,7 @@ const Post = () => {
   const [post, setPost] = useState({
     description: "",
     likes: 0,
+    comments: "hello"
   });
 
   // posts state from postsContext
@@ -35,7 +36,7 @@ const Post = () => {
       return;
     } else {
       // After post is clicked, clear post textarea, uploaded images, and names of files
-      setPost({ ...post, description: "" });
+      setPost({ ...post, description: "", comments: "" });
       setImages(null); // uploaded images
       document.getElementById("post-right-image").value = null; // names of files
     }
