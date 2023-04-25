@@ -14,33 +14,20 @@
 
 // Set up therequired modules
 const express = require('express')
-const Post = require('../schemas/Post')
+const {Post, Comment} = require('../schemas/Post')
 
 //connectDB()
 
 const router = express.Router()
 
-//Get request for acquiring posts
+//Get request for acquiring posts and comments
 router.get('/', async (req,res) =>
 {    
-    var msg = ""
-    const post = await Post.find().exec()
-    // for(let i = 0; i < post.length; i++) {
-
-    //     msg += "{user: " + post[i].user + ", "
-    //     msg += "liked: " + post[i].liked + ", "
-    //     msg += "likes: " + post[i].likes + ", "
-    //     msg += "description: " + post[i].description + "}<br>"
-    // }
-
+    const post = await Post.find().populate('comments').exec()
     res.send(JSON.stringify(post))
 })
 
-router.get('/createPost', async (req,res) =>
-{
-    
-})
-
+// Creates a new post
 router.post('/createPost', async(req,res) =>
 {
     const newPost = await Post.create({
@@ -51,4 +38,27 @@ router.post('/createPost', async(req,res) =>
     })
 })
 
+router.get('/:postID', async(req,res) =>
+{    
+    const post = await Post.findOne({_id : req.params.postID}).exec()    
+
+    post.comments.push(newComment._id)
+    post.save()
+    console.log(post)
+    console.log(newComment)
+
+    const newPost = await Post.find().populate('comments').exec()
+    console.log(newPost)
+    res.send(JSON.stringify(newPost))
+})
+
+router.post('/leaveComment/:', async(req,res) => {
+
+    const newComment = await Comment.create({
+        commenter: "Kirby",
+        commentMessage: "Poyo",
+        timestamp: "TODAY"        
+    });
+
+})
 module.exports = router;

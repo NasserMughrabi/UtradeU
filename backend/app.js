@@ -10,19 +10,13 @@ require("dotenv").config();
 const app = express();
 const User = require('./schemas/User')
 const Post = require('./schemas/Post')
+const Comment = require('./schemas/Post')
 app.use(bodyParser.json());
 
 // db
 const connectDB = require('./config/dbConn')
 
 connectDB()
-// mongoose
-//   .connect(process.env.MONGO_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("DB CONNECTED"))
-//   .catch((error) => console.log(`DB Connection Error ${error}`));
 
 // middleware
 app.use(morgan("dev"));
