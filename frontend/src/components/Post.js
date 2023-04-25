@@ -34,14 +34,16 @@ const Post = () => {
     if (post.description == "") {
       return;
     } else {
+      // After post is clicked, clear post textarea, uploaded images, and names of files
       setPost({ ...post, description: "" });
+      setImages(null); // uploaded images
+      document.getElementById("post-right-image").value = null; // names of files
     }
 
     axios
       .post("http://localhost:8080/createPost", post) // Discuss with Jacob why this isn't working anymore
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-
     // re-render the home component/page after creating a post
     setPosts([post, ...posts]);
   };
@@ -91,6 +93,16 @@ const Post = () => {
             <span className='loading-images'>Loading Images... </span>
           </div>
         )}
+        {/* <div class='col-md-4' id='col-md-4-id'>
+          <div class='profile-img' id='profile-img-id'>
+                <img
+                  src={image}
+                  className='uploaded-image'
+                  alt='Uploaded image'
+                />
+          </div>
+        </div> */}
+
         {images && (
           <div class='col-md-4' id='col-md-4-id'>
             <div class='profile-img' id='profile-img-id'>

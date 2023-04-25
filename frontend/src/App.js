@@ -7,6 +7,7 @@ import ListFeed from "./components/ListFeed";
 import Home from "./components/Home";
 import Chat from "./components/Chat";
 import { PostsProvider } from "./components/PostsContext";
+import Grid from "./components/Grid";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path ='/Home' element={<Home />} />
         </Routes>
       </Router>
+      {/* <Grid /> */}
     </PostsProvider>
   );
 }

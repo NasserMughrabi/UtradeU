@@ -16,10 +16,10 @@ const ListFeed = () => {
   // Get all posts from backend/express.js
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/posts`)
+      .get(`http://localhost:8080/posts?`)
       .then((response) => setPosts(response.data.reverse()))
       .catch((error) => console.log(error));
-  }, [posts]);
+  }, [posts]); // this will have to change later to use sockets for real-time communication. We don't really need to show this, but we can do that. Remove posts because this is not the optimal way of doing it.
 
   return (
     <section class='vh-100'>
