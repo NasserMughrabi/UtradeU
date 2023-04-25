@@ -16,7 +16,8 @@ const Post = () => {
   const [post, setPost] = useState({
     description: "",
     likes: 0,
-    comments: "hello"
+    comments: "hello",
+    pictureURL: null
   });
 
   // posts state from postsContext
@@ -41,6 +42,14 @@ const Post = () => {
       document.getElementById("post-right-image").value = null; // names of files
     }
 
+    const temp = new FormData();
+    temp.append('demo_image', post.demo_image);
+   
+    axios
+    .post("http://localhost:8080/image", temp)
+    .then((response) => console.log(response))
+    .catch((error) => console.log(error));
+
     axios
       .post("http://localhost:8080/createPost", post) // Discuss with Jacob why this isn't working anymore
       .then((response) => console.log(response))
@@ -53,6 +62,7 @@ const Post = () => {
   const [images, setImages] = useState(null);
   const handleImageChange = (e) => {
     const files = e.target.files;
+    setPost({ ...post, demo_image: files[0], pictureURL: files[0].name });
     const urls = [];
     for (let i = 0; i < files.length; i++) {
       const file = files[i];

@@ -24,8 +24,8 @@ require("dotenv").config();
 // app
 const app = express();
 const User = require('./schemas/User')
-const Post = require('./schemas/Post')
-const Comment = require('./schemas/Post')
+const {Comment,Post} = require('./schemas/Post')
+// const Comment = require('./schemas/Post')
 app.use(bodyParser.json());
 
 // db
@@ -52,31 +52,28 @@ app.get('/uploads/:imageName', (req, res) => {
 app.post('/createPost', async (req, res) =>
 {
   //instead of req.params, use req.body to get the stuff from the front end
-  
-  // if(req.file)
-  // {
-    //console.log("yes this has an image")
+
+
+    //send the image from the front end to the /uploads/ file
     upload(req, res, (err) => {
       if(err) {
         res.status(400).send("Something went wrong!");
       }
       res.send(req.file);
     })
-  //}
-
 
   const users = await User.find({}).exec();
   const posts = await Post.find({}).exec();
+  //sequentially assign which user is sending the post
   const newUser = users.at(posts.length % 5);
-  //console.log(newUser)
   const newPost = await Post.create({
     user : newUser.firstName + " " + newUser.lastName,
     description: req.body.description,
     likes : req.body.likes,
     liked : req.body.liked,
-    pictureURL : req.file.filename
+    pictureURL : req.body.pictureURL
   })
-  console.log(newPost)
+  // console.log(newPost)
 })
 
 app.post('/image', async(req, res) =>
@@ -107,10 +104,3 @@ const server = app.listen(port, () =>
   console.log(`server is running on port ${port}`)
 );
 
-//run();
-async function run()
-{
-  const user = await User.create({firstName : "Jacob" , lastName : "Day"})
-  //await user.save()
-  console.log(user)
-}

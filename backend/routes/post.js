@@ -23,17 +23,17 @@ const router = express.Router()
 //Get request for acquiring posts and comments
 router.get('/', async (req,res) =>
 {    
-    //const post = await Post.find().populate('comments').exec()
-    var msg = ""
-    const post = await Post.find().exec()
-    // for(let i = 0; i < post.length; i++) {
+    const post = await Post.find().populate('comments').exec()
+    // var msg = ""
+    // const post = await Post.find().exec()
+    // // for(let i = 0; i < post.length; i++) {
 
-    //     msg += "{user: " + post[i].user + ", "
-    //     msg += "liked: " + post[i].liked + ", "
-    //     msg += "likes: " + post[i].likes + ", "
-    //     msg += "description: " + post[i].description + "}<br>"
-    // }
-    console.log(post)
+    // //     msg += "{user: " + post[i].user + ", "
+    // //     msg += "liked: " + post[i].liked + ", "
+    // //     msg += "likes: " + post[i].likes + ", "
+    // //     msg += "description: " + post[i].description + "}<br>"
+    // // }
+    // console.log(post)
     res.send(JSON.stringify(post))
 })
 

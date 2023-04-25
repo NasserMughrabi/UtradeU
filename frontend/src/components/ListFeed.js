@@ -25,15 +25,8 @@ const ListFeed = () => {
       // .then((response) => console.log(response.data.reverse()[0]))
       .catch((error) => console.log(error));
       
-  }, [posts]); // this will have to change later to use sockets for real-time communication. We don't really need to show this, but we can do that. Remove posts because this is not the optimal way of doing it.
-
-  // useEffect(() =>
-  // {
-  //   axios.get(`http://localhost:8080/uploads/Happy Birthday Jimmy 2.png`)
-  //   .then((response) => setPictures(response.data))
-  //   .catch((error) => console.log(error));
-  // })
-
+  }, []); // this will have to change later to use sockets for real-time communication. We don't really need to show this, but we can do that. Remove posts because this is not the optimal way of doing it.
+  
   return (
     <section class='vh-100'>
       {posts &&
@@ -136,7 +129,7 @@ const ListFeed = () => {
                     <a href="#" class="btn-link text-semibold media-heading box-inline">Bobby Marz</a>
                     <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i>  7 min ago</p>
                   </div>
-                  <p> {post.comments.commenter} </p>
+                  {/*<p> {post.comments.commenter} </p>*/}
                   <div class="pad-ver">
                     <div class="btn-group">
                       <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i class="fa fa-thumbs-up"></i> Like </a>
