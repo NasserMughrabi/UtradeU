@@ -7,6 +7,8 @@ import ListFeed from "./components/ListFeed";
 import Home from "./components/Home";
 import Chat from "./components/Chat";
 import { PostsProvider } from "./components/PostsContext";
+import ChatWindow from "./components/ChatWindow";
+import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path='/' element={<Access />} />
           <Route path='/Profile/:firstName' element={<Profile />} />
           <Route path ='/Home' element={<Home />} />
+          <Route path ='/Chat' element={<ChatWindow />} />
+          <Route path ='/Comments' element={<Comments />} />
         </Routes>
       </Router>
     </PostsProvider>

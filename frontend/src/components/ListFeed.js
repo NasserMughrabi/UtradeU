@@ -3,12 +3,14 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { PostsContext } from "./PostsContext";
+import Comments from "./Comments";
 
 //icons
 import { FaSearch } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 
 const ListFeed = () => {
   const [posts, setPosts] = useContext(PostsContext);
@@ -68,6 +70,7 @@ const ListFeed = () => {
                           perferendis iure qui quos obcaecati vel amet sit
                           molestias? Sequi, error?
                         </div>
+
                         <div class='d-flex justify-content-end socials p-2 py-3'>
                           <i class='fa fa-thumbs-up'></i>
                           <i class='fa fa-comments-o'></i>
@@ -77,17 +80,27 @@ const ListFeed = () => {
                           <div class='d-flex flex-row fs-12'>
                             <div class='like p-2 cursor'>
                               <FaThumbsUp />
-                              <span class='ml-1'>Like</span>
+                              <span class='ml-1'> Like</span>
                             </div>
                             <div class='like p-2 cursor'>
+                              <a href="/comments">
                               <FaComment />
-                              <span class='ml-1'>Comment</span>
+                              <span class='ml-1'> Comment</span>
+                              </a>
                             </div>
                             <div class='like p-2 cursor'>
                               <i class='fa fa-share'>
                                 <FaShare />
                               </i>
-                              <span class='ml-1'>Share</span>
+                              <span class='ml-1'> Share</span>
+                            </div>
+                            <div class='like p-2 cursor'>
+                              <a href="/chat">
+                              <i class='fa fa-envelope'>
+                                <FaEnvelope />
+                              </i>
+                              <span class='ml-1'> Message the Seller</span>
+                              </a>
                             </div>
                           </div>
 
@@ -97,6 +110,10 @@ const ListFeed = () => {
                               <span class='ml-1'>{post.likes} Likes</span>
                             </div>
                           </div>
+
+                          <div>
+                          <Comments></Comments>
+                        </div>
                         </div>
                       </div>
                     </div>
