@@ -20,17 +20,18 @@ const ListFeed = () => {
   // Get all posts from backend/express.js
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/posts?`)
+      .get(`http://localhost:8080/posts`)
       .then((response) => setPosts(response.data.reverse()))
       // .then((response) => console.log(response.data.reverse()[0]))
       .catch((error) => console.log(error));
-      
   }, []); // this will have to change later to use sockets for real-time communication. We don't really need to show this, but we can do that. Remove posts because this is not the optimal way of doing it.
-  
+
   return (
     <section class='vh-100'>
+      {console.log(posts)}
       {posts &&
         posts.map((post) => {
+          // {console.log(post.Comments)}
           return (
             <article className='post-article'>
               <div class='container mt-4 mb-5'>
@@ -94,9 +95,9 @@ const ListFeed = () => {
                               <span class='ml-1'> Like</span>
                             </div>
                             <div class='like p-2 cursor'>
-                              <a href="/comments">
-                              <FaComment />
-                              <span class='ml-1'> Comment</span>
+                              <a href='/comments'>
+                                <FaComment />
+                                <span class='ml-1'> Comment</span>
                               </a>
                             </div>
                             <div class='like p-2 cursor'>
@@ -106,11 +107,11 @@ const ListFeed = () => {
                               <span class='ml-1'> Share</span>
                             </div>
                             <div class='like p-2 cursor'>
-                              <a href="/chat">
-                              <i class='fa fa-envelope'>
-                                <FaEnvelope />
-                              </i>
-                              <span class='ml-1'> Message the Seller</span>
+                              <a href='/chat'>
+                                <i class='fa fa-envelope'>
+                                  <FaEnvelope />
+                                </i>
+                                <span class='ml-1'> Message the Seller</span>
                               </a>
                             </div>
                           </div>
@@ -129,7 +130,7 @@ const ListFeed = () => {
                     <a href="#" class="btn-link text-semibold media-heading box-inline">Bobby Marz</a>
                     <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i>  7 min ago</p>
                   </div>
-                  {/*<p> {post.comments.commenter} </p>*/}
+                  <p> {post.comments.commenter} </p>
                   <div class="pad-ver">
                     <div class="btn-group">
                       <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i class="fa fa-thumbs-up"></i> Like </a>

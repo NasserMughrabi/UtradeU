@@ -40,7 +40,6 @@ router.get('/', async (req,res) =>
 // Creates a new post
 router.post('/createPost', async(req,res) =>
 {
-    console.log("In Cameron's Thingy")
     const newPost = await Post.create({
         User: req.params.User,
         description: req.params.description,
@@ -49,6 +48,7 @@ router.post('/createPost', async(req,res) =>
     })
 })
 
+// added
 router.get('/:postID', async(req,res) =>
 {    
     const post = await Post.findOne({_id : req.params.postID}).populate('comments').exec()
@@ -70,4 +70,5 @@ router.post('/leaveComment', async(req,res) => {
     console.log(post)
     console.log(newComment)
 })
+
 module.exports = router;

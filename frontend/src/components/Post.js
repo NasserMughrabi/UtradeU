@@ -17,7 +17,7 @@ const Post = () => {
     description: "",
     likes: 0,
     comments: "hello",
-    pictureURL: null
+    pictureURL: null,
   });
 
   // posts state from postsContext
@@ -33,7 +33,15 @@ const Post = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    document.getElementById("post-left-btn").style.boxShadow = "none"; // remove shadow when post is clicked
+
     if (post.description == "") {
+      // if user tries creating empty post indicate that it's not allowed and return
+      document.getElementById("post-content").style.border =
+        "1px solid #ce7171";
+      document.getElementById("post-content").style.boxShadow =
+        "0 0 10px #ce7171";
+      alert("Post Cannot Be Empty");
       return;
     } else {
       // After post is clicked, clear post textarea, uploaded images, and names of files
@@ -43,12 +51,12 @@ const Post = () => {
     }
 
     const temp = new FormData();
-    temp.append('demo_image', post.demo_image);
-   
+    temp.append("demo_image", post.demo_image);
+
     axios
-    .post("http://localhost:8080/image", temp)
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+      .post("http://localhost:8080/image", temp)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
 
     axios
       .post("http://localhost:8080/createPost", post) // Discuss with Jacob why this isn't working anymore
